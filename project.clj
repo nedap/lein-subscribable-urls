@@ -1,5 +1,5 @@
 ;; Please don't bump the library version by hand - use ci.release-workflow instead.
-(defproject lein-subscribable-urls "0.1.0-alpha1"
+(defproject lein-subscribable-urls "0.1.0-alpha2"
   ;; Please keep the dependencies sorted a-z.
   :dependencies []
 

@@ -24,7 +24,7 @@ However upgrading blindly it's not a particularly informed approach, and may lea
 Add:
 
 ```clojure
-[lein-subscribable-urls "0.1.0-alpha1"]
+[lein-subscribable-urls "0.1.0-alpha2"]
 ```
 
 to the `:plugins` vector of your `:user` profile in `~/.lein/profiles.clj`.
