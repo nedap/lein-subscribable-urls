@@ -49,6 +49,9 @@ curl -X POST "https://slack.com/api/chat.command?token=$TOKEN&channel=$CHANNEL_I
 # (more ...)
 ```
 
+> In case you make heavy use of Lein profiles, make sure to prefix the task invocation with your targeted profiles - e.g. `lein with-profile +test subscribable-urls ...`.
+> That way, the dependencies specific to those profiles will also show up.
+
 The `:recursive` option controls whether transitive dependencies will be printed.
 
 * You can use the `/feed` output directly, copying it into a Slack channel, line by line.
@@ -62,13 +65,14 @@ A workflow I would recommend is creating a `#clojure-libs-rss` channel in your S
 
 * Not every GitHub repo uses its `releases` functionality
 * This plugin only covers GitHub-backed projects: GitLab is missing (it doesn't serve RSS) as are projects setting any other `:url` (including `nil`)
+* Private repos (even if yours) will be unreachable
 
 ## Analyzing all your projects
 
 cd into your "code" dir (which can also be `~`), fire up `irb` (the Ruby console), and run:
 
 ```ruby
-Dir['*'].select{|f| File.directory?(f) && File.exist?(f + "/project.clj")}.map{|f| `cd #{f}; lein do deps, subscribable-urls :format feed :recursive false`.split("\n") }.flatten(1).uniq.sort.each{|a| puts a}; nil
+Dir['*'].select{|f| File.directory?(f) && File.exist?(f + "/project.clj")}.map{|f| `cd #{f}; lein with-profile +test do deps, subscribable-urls :format feed :recursive false`.split("\n") }.flatten(1).uniq.sort.each{|a| puts a}; nil
 ```
 
 ...make sure to tweak the inner `lein` per your liking.
