@@ -9,7 +9,7 @@ A Leiningen plugin that lists all the `:url`s contained in your dependency graph
 Add
 
 ```clojure
-[lein-subscribable-urls "unreleased"]
+[lein-subscribable-urls "0.1.0-alpha1"]
 ```
 
 to the `:plugins` vector of your `:user` profile in `~/.lein/profiles.clj`.
