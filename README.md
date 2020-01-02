@@ -56,4 +56,4 @@ This project takes [lein-licenses](https://github.com/technomancy/lein-licenses)
 Copyright © 2012-2017 Phil Hagelberg and contributors
 Copyright © 2020- Nedap
 
-Distributed under the Eclipse Public License, the same as Clojure.
+This program and the accompanying materials are made available under the terms of the [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0)
