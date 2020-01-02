@@ -33,7 +33,7 @@ to the `:plugins` vector of your `:user` profile in `~/.lein/profiles.clj`.
 
 ## Usage
 
-Run `lein subscribable-urls :format {feed,curl} :recursive {true,false}` in your project directory:
+Run `lein subscribable-urls :format {feed,curl,plain} :recursive {true,false}` in your project directory:
 
 ```bash
 $ lein subscribable-urls :format feed :recursive true
@@ -56,6 +56,7 @@ The `:recursive` option controls whether transitive dependencies will be printed
 
 * You can use the `/feed` output directly, copying it into a Slack channel, line by line.
 * You can use the `curl` output to build a simple Bash script that executes those `curl` invocations sequentially. You are responsible for setting `TOKEN` and `CHANNEL` beforehand.  
+* `:format plain` prints plain URLs, without any Slack-related wrapping whatsoever.
 
 ## Slack integration in practice
 

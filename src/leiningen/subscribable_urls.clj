@@ -148,17 +148,18 @@
                               (str s "/"))
                     atomized (str ensured "releases.atom")]
                 (case format
-                  "feed" (str "/feed " atomized)
-                  "curl" (str
-                          "curl -X POST \"https://slack.com/api/chat.command?token=$TOKEN&channel=$CHANNEL_ID&command=/feed&text="
-                          atomized
-                          "&pretty=1\"")))))))
+                  "plain" atomized
+                  "feed"  (str "/feed " atomized)
+                  "curl"  (str
+                           "curl -X POST \"https://slack.com/api/chat.command?token=$TOKEN&channel=$CHANNEL_ID&command=/feed&text="
+                           atomized
+                           "&pretty=1\"")))))))
 
 (defn subscribable-urls
-  "USAGE: lein subscribable-urls :format {feed,curl} :recursive {true,false}"
+  "USAGE: lein subscribable-urls :format {feed,curl,plain} :recursive {true,false}"
   [project & {format ":format"
               recursive? ":recursive"}]
-  (assert (#{"feed" "curl"} format)
+  (assert (#{"feed" "curl" "plain"} format)
           (#{"true" "false"} recursive?))
 
   (let [recursive? (read-string recursive?)
