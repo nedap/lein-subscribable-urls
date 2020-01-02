@@ -163,12 +163,17 @@
           (#{"true" "false"} recursive?))
 
   (let [recursive? (read-string recursive?)
-        roots (->> project
-                   :dependencies
-                   (map (fn [[a b]]
-                          [(name a), b]))
-                   set)
-        deps (cond->> (#'classpath/get-dependencies :dependencies :managed-dependencies project)
+        roots (->> [(-> project :dependencies)
+                    (-> project :plugins)]
+                   (map (fn [x]
+                          (->> x
+                               (map (fn [[a b]]
+                                      [(name a), b]))
+                               (set))))
+                   (reduce into))
+        deps+plugins (merge (#'classpath/get-dependencies :plugins :managed-dependencies project)
+                            (#'classpath/get-dependencies :dependencies :managed-dependencies project))
+        deps (cond->> deps+plugins
                (not recursive?) (filter (fn [[[a b] v]]
                                           (let [v [(name a) b]]
                                             (roots v))))
