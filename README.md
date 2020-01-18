@@ -13,12 +13,6 @@ things could be a bit more automated, and customized (individuals/teams decide w
 
 Similarly it's worth pointing out that the Github Releases page can serve as a great medium for changelogs.
 
-## Alternatives
-
-* An alternative is integrating [lein-ancient](https://github.com/xsc/lein-ancient) into your workflow.
-However upgrading blindly it's not a particularly informed approach, and may lead to security risks ([e.g.](https://blog.npmjs.org/post/180565383195/details-about-the-event-stream-incident)).
-* [lein-nvd](https://github.com/rm-hull/lein-nvd) has a slight overlap with this library, but both plugins are certainly not exclusive.
-
 ## Installation
 
 Add:
@@ -82,10 +76,16 @@ Dir['*'].select{|f| File.directory?(f) && File.exist?(f + "/project.clj")}.map{|
 
 This project takes [lein-licenses](https://github.com/technomancy/lein-licenses) as a baseline. It's not a fork since its git history barely helps understanding this project's different purpose.
 
+## Alternatives
+
+* An alternative is integrating [lein-ancient](https://github.com/xsc/lein-ancient) into your workflow.
+However upgrading dependencies wholesale is not a particularly informed approach, and may lead to security risks ([e.g.](https://blog.npmjs.org/post/180565383195/details-about-the-event-stream-incident)).
+* [lein-nvd](https://github.com/rm-hull/lein-nvd) has a slight overlap with this library, but both plugins are certainly not exclusive.
+
 ## License
 
 Copyright © 2012-2017 Phil Hagelberg and contributors
 
 Copyright © 2020- Nedap
 
-This program and the accompanying materials are made available under the terms of the [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0)
+This program and the accompanying materials are made available under the terms of the [Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0).
